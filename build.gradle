@@ -85,9 +85,9 @@ bintray {
         vcsUrl = 'https://github.com/onotoliy/opposite-treasure-data.git'
     }
     version {
-        name = project.version
+        name = "$version"
         released = new Date()
-        vcsTag = project.version
+        vcsTag = "$version"
 
         gpg {
             sign = true
