@@ -8,7 +8,7 @@ repositories {
 }
 
 group 'com.github.onotoliy.opposite'
-version '0.0.1'
+version "$version"
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
@@ -46,7 +46,10 @@ kotlin {
 }
 
 bintrayUpload.doFirst {
-    publications = project.publishing.publications
+    publications = project.publishing.publications.findAll { !it.name.contains('-test') }.collect {
+        println("Uploading artifact '$it.groupId:$it.artifactId:$it.version' from publication '$it.name'")
+        it.name // << WORKAROUND IS HERE
+    }
 }
 
 publishing {
@@ -55,15 +58,23 @@ publishing {
             url  = 'https://dl.bintray.com/a-k-pohresniy/onotoliy'
         }
     }
+    publications {
+        MyPublication(MavenPublication) {
+            groupId 'com.github.onotoliy.opposite'
+            artifactId 'treasure-data-multiplatform'
+            version project.version
+        }
+    }
 }
 
 bintray {
     user = 'a-k-pohresniy'
     key = '61891da6146e09d692266668fcf795d84824afa6'
+    publish = false
+    publications = ['MyPublication']
     pkg {
-        repo = 'maven'
+        repo = 'onotoliy'
         name = 'treasure-data-multiplatform'
-        userOrg = 'onotoliy'
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/onotoliy/opposite-treasure-data.git'
     }
