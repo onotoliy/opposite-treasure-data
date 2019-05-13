@@ -1,6 +1,7 @@
 plugins {
     id 'kotlin-multiplatform' version '1.3.31'
-    id "com.jfrog.bintray" version "1.8.4"
+    id "com.jfrog.bintray" version '1.8.4'
+    id 'net.researchgate.release' version '2.6.0'
 }
 
 repositories {
@@ -12,6 +13,7 @@ version "$version"
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'net.researchgate.release'
 
 kotlin {
     jvm() {
@@ -65,6 +67,10 @@ publishing {
             version project.version
         }
     }
+}
+
+release {
+    afterReleaseBuild.dependsOn bintrayUpload
 }
 
 bintray {
