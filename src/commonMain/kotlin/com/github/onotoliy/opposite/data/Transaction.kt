@@ -7,11 +7,13 @@ import com.github.onotoliy.opposite.data.core.HasUUID
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Event(override val uuid: String = "",
-            override val name: String = "",
-            val contribution: String = "",
-            val total: String = "",
-            val deadline: String = "",
-            override val creationDate: String = "",
-            override val author: Option = Option()
+class Transaction(
+    override val uuid: String = "",
+    override val name: String = "",
+    val cash: String = "",
+    val type: TransactionType = TransactionType.NONE,
+    val person: Option? = null,
+    val event: Option? = null,
+    override val creationDate: String = "",
+    override val author: Option = Option()
 ) : HasUUID, HasName, HasCreationDate, HasAuthor

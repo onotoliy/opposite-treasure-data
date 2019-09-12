@@ -1,6 +1,6 @@
 package com.github.onotoliy.opposite.data.core
 
-interface HasId<I> {
+interface HasUUID {
 
-    fun getId() : I
+    val uuid: String
 }

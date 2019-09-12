@@ -1,13 +1,14 @@
 package com.github.onotoliy.opposite.data
 
-import com.github.onotoliy.opposite.data.core.HasId
+import com.github.onotoliy.opposite.data.core.HasUUID
+import kotlinx.serialization.Serializable
 
-class Deposit(private val person: Option<String>? = null,
-              private val deposit: String = "0.0") : HasId<String> {
+@Serializable
+class Deposit(
+    val person: Option = Option("", ""),
+    val deposit: String = "0.0") : HasUUID {
 
-    override fun getId(): String {
-        return person?.getId() ?: ""
-    }
+    override val uuid: String = person.uuid
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -21,7 +22,7 @@ class Deposit(private val person: Option<String>? = null,
     }
 
     override fun hashCode(): Int {
-        var result = person?.hashCode() ?: 0
+        var result = person.hashCode()
         result = 31 * result + deposit.hashCode()
         return result
     }

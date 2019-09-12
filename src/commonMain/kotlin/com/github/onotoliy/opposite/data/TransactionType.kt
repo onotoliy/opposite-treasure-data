@@ -1,6 +1,6 @@
 package com.github.onotoliy.opposite.data
 
-enum class CashboxType {
+enum class TransactionType {
 
     NONE,
     COST,
