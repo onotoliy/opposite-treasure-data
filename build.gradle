@@ -21,7 +21,7 @@ plugins {
 }
 
 group 'com.github.onotoliy.opposite'
-version "$version"
+version "1.0.0"
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
@@ -30,6 +30,9 @@ repositories {
     mavenCentral()
     maven {
         url "https://dl.bintray.com/kotlin/kotlinx/"
+    }
+    maven {
+        url  "https://dl.bintray.com/a-k-pohresniy/onotoliy"
     }
 }
 
@@ -47,6 +50,12 @@ kotlin {
         mavenPublication{
             version = "$version"
             artifactId = "treasure-data-js"
+        }
+    }
+    metadata() {
+        mavenPublication{
+            version = "$version"
+            artifactId = "treasure-data-metadata"
         }
     }
 
@@ -72,10 +81,31 @@ kotlin {
     }
 }
 
+publishing {
+    repositories {
+        maven {
+            url = 'https://dl.bintray.com/a-k-pohresniy/onotoliy/'
+        }
+    }
+
+    publications {
+        jvm() {
+            artifactId = "treasure-data-jvm"
+        }
+        js() {
+            artifactId = "treasure-data-js"
+        }
+        metadata() {
+            artifactId = "treasure-data-metadata"
+        }
+    }
+}
+
 bintray {
     user = 'a-k-pohresniy'
     key = '61891da6146e09d692266668fcf795d84824afa6'
-    publish = false
+    publications = ['jvm', 'js', 'metadata']
+    publish = true
     pkg {
         repo = 'onotoliy'
         name = 'treasure-data'
