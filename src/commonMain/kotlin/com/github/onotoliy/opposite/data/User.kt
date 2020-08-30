@@ -12,5 +12,6 @@ class User(
     val email: String = "",
     val phone: String = "",
     val notifyByPhone: Boolean = false,
-    val notifyByEmail: Boolean = true
+    val notifyByEmail: Boolean = true,
+    val roles: Set<String> = setOf()
 ) : HasUUID, HasName
