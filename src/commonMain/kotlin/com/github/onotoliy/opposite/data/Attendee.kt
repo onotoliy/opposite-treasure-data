@@ -5,9 +5,9 @@ import com.github.onotoliy.opposite.data.core.HasUUID
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Deposit(
+class Attendee(
     private val person: Option = Option("", ""),
-    val deposit: String = "0.0"
+    val type: AttendeeType = AttendeeType.NONE
 ) : HasUUID, HasName {
 
     override val uuid: String

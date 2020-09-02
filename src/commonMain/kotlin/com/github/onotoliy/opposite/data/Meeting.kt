@@ -7,13 +7,12 @@ import com.github.onotoliy.opposite.data.core.HasUUID
 import kotlinx.serialization.Serializable
 
 @Serializable
-class Event(
+class Meeting(
     override val uuid: String = "",
     override val name: String = "",
-    val contribution: String = "",
-    val total: String = "",
-    val deadline: String = "",
-    val meeting: Option? = null,
+    val absencePenalty: String = "",
+    val meetingDate: String = "",
+    val attendees: List<Attendee> = listOf(),
     override val creationDate: String = "",
     override val author: Option = Option()
 ) : HasUUID, HasName, HasCreationDate, HasAuthor
