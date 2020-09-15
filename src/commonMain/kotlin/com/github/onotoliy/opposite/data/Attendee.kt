@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class Attendee(
-    private val person: Option = Option("", ""),
+    private val person: Option = Option(),
     val type: AttendeeType = AttendeeType.NONE
 ) : HasUUID, HasName {
 

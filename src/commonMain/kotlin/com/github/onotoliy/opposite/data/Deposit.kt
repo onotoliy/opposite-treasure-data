@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class Deposit(
-    private val person: Option = Option("", ""),
+    private val person: Option = Option(),
     val deposit: String = "0.0"
 ) : HasUUID, HasName {
 
