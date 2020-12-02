@@ -21,7 +21,7 @@ plugins {
 }
 
 group 'com.github.onotoliy.opposite'
-version "1.0.7"
+version "1.0.10"
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'

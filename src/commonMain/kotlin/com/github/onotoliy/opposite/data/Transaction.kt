@@ -1,9 +1,6 @@
 package com.github.onotoliy.opposite.data
 
-import com.github.onotoliy.opposite.data.core.HasAuthor
-import com.github.onotoliy.opposite.data.core.HasCreationDate
-import com.github.onotoliy.opposite.data.core.HasName
-import com.github.onotoliy.opposite.data.core.HasUUID
+import com.github.onotoliy.opposite.data.core.*
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -14,6 +11,8 @@ class Transaction(
     val type: TransactionType = TransactionType.NONE,
     val person: Option? = null,
     val event: Option? = null,
+    val transactionDate: String = "",
     override val creationDate: String = "",
-    override val author: Option = Option()
-) : HasUUID, HasName, HasCreationDate, HasAuthor
+    override val author: Option = Option(),
+    override var deletionDate: String? = null
+) : HasUUID, HasName, HasCreationDate, HasAuthor, HasDeletionDate
