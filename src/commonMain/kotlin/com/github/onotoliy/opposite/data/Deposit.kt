@@ -6,15 +6,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 class Deposit(
-    private val person: Option = Option(),
+    override val uuid: String = "",
+    override val name: String = "",
     val deposit: String = "0.0"
 ) : HasUUID, HasName {
-
-    override val uuid: String
-        get() = person.uuid
-
-    override val name: String
-        get() = person.name
-
     override fun toString(): String = "{\"uuid\": \"$uuid\", \"name\": \"$name\", \"deposit\": \"$deposit\"}"
 }
