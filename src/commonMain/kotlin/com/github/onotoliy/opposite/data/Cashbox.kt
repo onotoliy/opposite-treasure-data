@@ -6,4 +6,6 @@ import kotlinx.serialization.Serializable
 class Cashbox(
     val deposit: String = "0.0",
     val lastUpdateDate: String = ""
-)
+){
+    override fun toString(): String = "{\"deposit\": \"$deposit\", \"lastUpdateDate\": \"$lastUpdateDate\"}"
+}

@@ -6,4 +6,6 @@ import kotlinx.serialization.Serializable
 class Debt(
     val event: Event = Event(),
     val deposit: Deposit = Deposit()
-)
+) {
+    override fun toString(): String = "{\"event\": $event, \"deposit\": $deposit}"
+}

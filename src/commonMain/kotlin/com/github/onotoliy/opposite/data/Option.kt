@@ -8,4 +8,6 @@ import kotlinx.serialization.Serializable
 class Option(
     override val uuid: String = "",
     override val name: String = ""
-) : HasUUID, HasName
+) : HasUUID, HasName {
+    override fun toString(): String = "{\"uuid\": \"$uuid\", \"name\": \"$name\"}"
+}

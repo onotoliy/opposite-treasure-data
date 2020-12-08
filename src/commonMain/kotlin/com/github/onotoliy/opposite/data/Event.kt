@@ -13,4 +13,16 @@ class Event(
     override val creationDate: String = "",
     override val author: Option = Option(),
     override val deletionDate: String? = null
-) : HasUUID, HasName, HasCreationDate, HasAuthor, HasDeletionDate
+) : HasUUID, HasName, HasCreationDate, HasAuthor, HasDeletionDate {
+    override fun toString(): String =
+        """{
+            |  'uuid': '$uuid', 
+            |  'name': '$name', 
+            |  'contribution': '$contribution', 
+            |  'total': '$total', 
+            |  'deadline': $deadline, 
+            |  'creationDate': '$creationDate', 
+            |  'author': $author, 
+            |  'deletionDate':'$deletionDate'
+            |}""".trimMargin()
+}

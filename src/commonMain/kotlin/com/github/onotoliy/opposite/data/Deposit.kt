@@ -16,4 +16,5 @@ class Deposit(
     override val name: String
         get() = person.name
 
+    override fun toString(): String = "{\"uuid\": \"$uuid\", \"name\": \"$name\", \"deposit\": \"$deposit\"}"
 }

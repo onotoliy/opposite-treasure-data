@@ -15,4 +15,18 @@ class Transaction(
     override val creationDate: String = "",
     override val author: Option = Option(),
     override var deletionDate: String? = null
-) : HasUUID, HasName, HasCreationDate, HasAuthor, HasDeletionDate
+) : HasUUID, HasName, HasCreationDate, HasAuthor, HasDeletionDate {
+    override fun toString(): String =
+        """{
+            |  'uuid': '$uuid', 
+            |  'name': '$name', 
+            |  'cash': '$cash', 
+            |  'type': '$type', 
+            |  'person': $person, 
+            |  'event': $event, 
+            |  'transactionDate': '$transactionDate', 
+            |  'creationDate': '$creationDate', 
+            |  'author': $author, 
+            |  'deletionDate':'$deletionDate'
+            |}""".trimMargin()
+}
