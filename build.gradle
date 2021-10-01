@@ -4,9 +4,8 @@ buildscript {
         serializer_version = '0.12.0'
     }
     repositories {
-        jcenter()
         maven {
-            url "https://dl.bintray.com/kotlin/kotlinx/"
+            url "http://185.12.95.242:8088/repository/onotoliy-maven-group/"
         }
     }
 
@@ -17,24 +16,18 @@ buildscript {
 
 plugins {
     id 'org.jetbrains.kotlin.multiplatform' version '1.3.50'
-    id 'com.jfrog.bintray' version '1.8.4'
 }
 
 group 'com.github.onotoliy.opposite'
-version "1.0.14"
+version "1.0.15"
 
 apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'kotlinx-serialization'
 apply plugin: 'org.jetbrains.kotlin.multiplatform'
 
 repositories {
-    mavenCentral()
     maven {
-        url "https://dl.bintray.com/kotlin/kotlinx/"
-    }
-    maven {
-        url  "https://dl.bintray.com/a-k-pohresniy/onotoliy"
+        url "http://185.12.95.242:8088/repository/onotoliy-maven-group/"
     }
 }
 
@@ -86,7 +79,11 @@ kotlin {
 publishing {
     repositories {
         maven {
-            url = 'https://dl.bintray.com/a-k-pohresniy/onotoliy/'
+            url = 'http://185.12.95.242:8088/repository/maven-releases/'
+            credentials {
+                username = property('onotoliy.nexus.username')
+                password = property('onotoliy.nexus.password')
+            }
         }
     }
 
@@ -99,30 +96,6 @@ publishing {
         }
         metadata() {
             artifactId = "treasure-data-metadata"
-        }
-    }
-}
-
-bintray {
-    user = property('onotoliy.bintray.user')
-    key = property('onotoliy.bintray.key')
-    publications = ['jvm', 'js', 'metadata']
-    publish = true
-    pkg {
-        repo = 'onotoliy'
-        name = 'treasure-data'
-        userOrg = 'a-k-pohresniy'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/onotoliy/opposite-treasure-data.git'
-    }
-    version {
-        name = project.version
-        released = new Date()
-        vcsTag = project.version
-
-        gpg {
-            sign = true
-            passphrase = property('onotoliy.bintray.passphrase')
         }
     }
 }
